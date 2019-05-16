@@ -6,7 +6,7 @@ public class displayAll {
     public displayAll( ObjectTable [] playerlist) { //<-------------------- bring in player list
         this.playerlist = playerlist;
     }
-    // THis  is category         this is each row data
+                                                                                                  // THis  is category         this is each row data
     public void  displayall(){
         for(int y = 0; y < 10;y++ ) {                                                                      //    ^               ^
             for (int x = 0; x < playerlist[1].getArrayRK().length; x++) {                                 //    /|\             /|\

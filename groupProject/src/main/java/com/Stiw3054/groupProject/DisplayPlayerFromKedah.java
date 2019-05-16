@@ -7,28 +7,27 @@ import java.util.Properties;
 
 class DisplayPlayerFromKedah {
     private ObjectTable[] playerlist;
-    private Properties prop = new Properties();
+    private PropertiesFile prop = new PropertiesFile();
 
     DisplayPlayerFromKedah(ObjectTable[] playerlist) { //<-------------------- bring in player list
         this.playerlist = playerlist;
     }
 
     void RetrievePlayer() {
-        try (InputStream input = new FileInputStream("config.properties")) {
             // load a properties file
-            prop.load(input);
+        System.out.println("| Rk.  |  SNo  |  Name                                       | Rtg  | Club/City        | Pts. | Category                                           |");
+        System.out.println("-------|-------|---------------------------------------------|------|------------------|------|----------------------------------------------------|");
+
             for (int y = 0; y < 10; y++) {
-                for (int x = playerlist[1].getArrayRK().length-1; x>0; x--) { //Sorting winning points in ascending order.
+                for (int x = playerlist[0].getArrayRK().length-1; x>0; x--) { //Sorting winning points in ascending order.
                     if (playerlist[y].getArrayRK()[x] != null) {
-                        if ((playerlist[y].getArrayState()[x].equals("KEDAH"))) {
-                            System.out.printf("| %-3s  |  %-3s  |  %-42s | %-4s | %-15s  | %-4s | %-50s |\n", playerlist[y].getArrayRK()[x], playerlist[y].getArraySno()[x], playerlist[y].getArrayName()[x], playerlist[y].getArrayRtg()[x], prop.getProperty("sTATE"), playerlist[y].getArrayPts()[x], playerlist[y].getArrayCat()[x]);
+                        if ((playerlist[y].getArrayState()[x].equals(prop.ReadPropertiesState()))) {
+                            System.out.printf("| %-3s  |  %-3s  |  %-42s | %-4s | %-15s  | %-4s | %-50s |\n", playerlist[y].getArrayRK()[x], playerlist[y].getArraySno()[x], playerlist[y].getArrayName()[x], playerlist[y].getArrayRtg()[x], playerlist[y].getArrayState()[x], playerlist[y].getArrayPts()[x], playerlist[y].getArrayCat()[x]);
                         }
                     }
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
-}
+
 

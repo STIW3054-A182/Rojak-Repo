@@ -6,10 +6,9 @@ import java.net.URL;
 import java.util.concurrent.Callable;
 
 public class NetworkConnection implements Callable<String> {
-    private String url, path;
+    private String url;
 
-    NetworkConnection(String path, String url) {
-        this.path = path;
+    NetworkConnection(String url) {
         this.url = url;
     }
 
@@ -36,7 +35,7 @@ public class NetworkConnection implements Callable<String> {
         } else{
             try {
                 LogFile logFile = new LogFile();
-                logFile.createLogFile(path, url);
+                logFile.createLogFile(url);
                 url = "0";
             } catch (IOException e) {
                 e.printStackTrace();

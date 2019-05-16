@@ -9,18 +9,11 @@ class LogFile extends Thread {
 
     private Date logDate = new Date();
 
-    void createLogFile(String path, String url) throws IOException {
+    void createLogFile(String url) throws IOException {
 
-        File logFilePath = new File(path);
-        logFilePath.mkdir();
-
-        String LogFileName = "ErrorLink"+".log";
-        File logFile = new File(logFilePath, LogFileName);
-        logFile.createNewFile();
-
-        FileWriter writefile = new FileWriter(logFile.toString(),true);
+        FileWriter writefile = new FileWriter("resource\\ErrorLink.log",true);
         writefile.write(String.valueOf(logDate) + "\n");
-        writefile.append(url).append(" : Not Exists\n");
+        writefile.write(url+": Not Exists\n");
         writefile.close();
     }
 }
