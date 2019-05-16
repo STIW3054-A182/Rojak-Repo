@@ -1,5 +1,6 @@
 package com.Stiw3054.groupProject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,8 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class CountWiningPoint {
     List<String> ValidURLList;
@@ -29,10 +29,9 @@ public class CountWiningPoint {
             String Category = "";
             try{
                 doc = Jsoup.connect(uri).get();
-                Pattern p=Pattern.compile("(?<=\\()[^\\)]+");
-                Matcher m = p.matcher(doc.select("div.defaultDialog h2").first().text().trim());
-                while(m.find())
-                    Category = m.group();
+                Elements header=doc.select("div:nth-child(2) h2");
+                String cat=header.text();
+                Category= StringUtils.substringAfter(cat,"9");
                 Elements table = doc.select("table.CRs1 tr");
                 if(table.hasText()){
                     table.remove(0);
@@ -79,21 +78,20 @@ public class CountWiningPoint {
 
     public void display(HashMap<String,HashMap<String,Double>> Map){
         double Total = 0;
-        System.out.println("\n\t|-------------------------------------|");
-        System.out.println("\t| State         | Category |  Total   |");
-        System.out.println("\t|-------------------------------------|");
+        System.out.println("\n|-------------------------------------|");
+        System.out.println("| State         | Category |  Total   |");
+        System.out.println("|-------------------------------------|");
         for (HashMap.Entry<String,HashMap<String,Double>> entry1 : MainMap.entrySet()) {
             double total = 0;
             for(HashMap.Entry<String,Double> entry2 : entry1.getValue().entrySet()){
-                System.out.printf("\t| %-14s| %-8s | %-8s |\n", entry1.getKey(),entry2.getKey(),entry2.getValue());
+                System.out.printf("| %-14s| %-8s | %-8s |\n", entry1.getKey(),entry2.getKey(),entry2.getValue());
                 total += entry2.getValue();
             }
-            System.out.printf("\t| %-14s| %-8s | %-8s |\n", "","TOTAL",total);
-            System.out.println("\t|-------------------------------------|");
+            System.out.printf("| %-14s| %-8s | %-8s |\n", "","TOTAL",total);
+            System.out.println("|-------------------------------------|");
             Total += total;
         }
-        System.out.printf("\t| %-14s| %-8s | %-8s |\n", "GRAND TOTAL","",Total);
-        System.out.println("\t|-------------------------------------|\n\n");
+        System.out.printf("| %-14s| %-8s | %-8s |\n", "GRAND TOTAL","",Total);
+        System.out.println("|-------------------------------------|\n\n");
     }
-
 }
