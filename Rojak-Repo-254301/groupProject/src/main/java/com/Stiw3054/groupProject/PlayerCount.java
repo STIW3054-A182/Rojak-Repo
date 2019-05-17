@@ -25,7 +25,7 @@ public class PlayerCount {
         }
 
         for(int x=0;x<playerNum.length;x++){
-            total += playerNum[x];
+            total += (playerNum[x]-1);
         }
         System.out.println("|----------------------------------------------------|-------|");
         System.out.printf("| %-50s | %5s |\n", "TOTAL",total);
