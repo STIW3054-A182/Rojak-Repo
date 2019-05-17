@@ -53,9 +53,7 @@ public class CheckTable {
                     count ++;
 
                 }
-                else{// enter log file
 
-                }
 
 
             }
@@ -64,11 +62,14 @@ public class CheckTable {
                 playerlist[countvtable] = objectTable;
                 countvtable++;
             }
+            else{
+                LogFile logFile = new LogFile();
+                logFile.createLogFile(ValidURLList.get(x));
+
+            }
         }
 
-        /*for(String ppp:playerlist[1].getArrayRK()){
-            System.out.println(ppp);
-        }*/
+
     }
 
     public ObjectTable [] getPlayerList() {
