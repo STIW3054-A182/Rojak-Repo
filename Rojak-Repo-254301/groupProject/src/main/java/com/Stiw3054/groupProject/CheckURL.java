@@ -73,6 +73,8 @@ public class CheckURL {
 
         System.out.println();
         System.out.println("3. Display Statistics......");
+        DisplayStatistics ds1 = new DisplayStatistics(playerlist);
+        ds1.displayStatistics();
 
         System.out.println();
         System.out.println("4. All Players From KEDAH......\n");
