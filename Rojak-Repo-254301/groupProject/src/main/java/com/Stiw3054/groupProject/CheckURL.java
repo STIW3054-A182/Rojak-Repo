@@ -12,11 +12,7 @@ public class CheckURL {
 
     public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
 
-        long startTime = System.currentTimeMillis();
-        long endTime = System.currentTimeMillis();
-        long executeTime = endTime - startTime;
-
-        int coreCount = Runtime.getRuntime().availableProcessors();
+            int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService executorservice = Executors.newFixedThreadPool(coreCount);
         PropertiesFile propertiesFile = new PropertiesFile();
         File relativePath = new File(propertiesFile.ReadPropertiesPath());
@@ -25,9 +21,7 @@ public class CheckURL {
 
         String fileName = relativePath.getName();
         System.out.println("File name : " + fileName);
-        //  System.out.print("C:\\Users\\User\\IdeaProjects\\Rojak-Repo-master\\Rojak-Repo-254301\\groupProject\\resource\\url.txt");
-        //String fileName = String.valueOf(filePath.getFileName());
-
+    
         List<String> myURLArrayList = Files.readAllLines(Paths.get(path));
         List<String> ValidURLlist = new ArrayList<>();
         System.out.println("\n1. Verifying the URLs ......");
@@ -37,7 +31,6 @@ public class CheckURL {
             if (!ValidURL.get().equals("0"))
                 ValidURLlist.add(ValidURL.get());
         }
-        ValidURLlist.forEach(System.out::println);
         executorservice.shutdown();
 
         while (!executorservice.isTerminated()) {
@@ -87,18 +80,12 @@ public class CheckURL {
         displayTop3.displaytop3(playerlist, propertiesFile.ReadPropertiesTop());
 
         System.out.println("6. Display Wining Points......");
-        /*CountWiningPoint countWiningPoint = new CountWiningPoint(ValidURLlist);
-        countWiningPoint.checkWiningPointTable();
-        List Alldata = countWiningPoint.getPlayerList();
-        CountWiningPoint cwp = new CountWiningPoint(ValidURLlist);
-        cwp.count(Alldata);*/
-
         CountWiningPoint countWiningPoint = new CountWiningPoint(playerlist);
         countWiningPoint.count();
+
         System.out.println();
         System.out.println("7. Display A Player Result......\n");
         DisplayPlayerResult displayPlayerResult = new DisplayPlayerResult();
         displayPlayerResult.DisplayerPlayerResult(playerlist, propertiesFile.ReadPropertiesPlayer());
-        System.out.println("\nExecution time in milliseconds: " + executeTime);
     }
 }
