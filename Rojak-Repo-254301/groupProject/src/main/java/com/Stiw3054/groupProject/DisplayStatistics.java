@@ -34,7 +34,7 @@ public class DisplayStatistics {
             GrandTotal += total;
             System.out.printf("| %-15s  |  %-50s  | %d\t |\n", "...", "Total", total);
         }
-        System.out.println("|------------------|-------------------------------------------------------|------|");
+        System.out.println("|------------------|------------------------------------------------------|------|");
         System.out.printf("| %-15s  |  %-50s  | %d  |\n\n", "Grand Total", "", GrandTotal);
     }
 }
