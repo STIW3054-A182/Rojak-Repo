@@ -4,6 +4,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
 
@@ -11,7 +13,7 @@ public class CheckTable {
     List <String> ValidURLList;
     Document doc;
     String xxx= "";
-    ObjectTable [] playerlist = new ObjectTable[10];
+    List <ObjectTable> playerlist = new ArrayList<ObjectTable>();
     int countvtable = 0;
     String cat;
 
@@ -31,36 +33,37 @@ public class CheckTable {
             ObjectTable objectTable = new ObjectTable();
             doc = Jsoup.connect(ValidURLList.get(x)).get();
             Elements table = doc.select("table.CRs1 tr");
-            for (Element row : table) {
-                Elements tds = row.getElementsByTag("td");
-                ifvalid =tds.hasText();
-                if (ifvalid) {
-                    Elements table2 = doc.select("div.defaultDialog h2");
-                    for (Element row1 : table2) {
-                        Elements tds1 = row1.getElementsMatchingText("\\d{4}?");
-                        if (tds1.hasText()){
-                            cat =tds1.text();
-                            //System.out.println(tds1.text());
-                        }
+            ifvalid =table.hasText();
+            Elements table2 = doc.select("div.defaultDialog h2");
+            for (Element row1 : table2) {
+                Elements tds1 = row1.getElementsMatchingText("\\d{4}?");
+                if (tds1.hasText()){
+                    cat =tds1.text();
+
+                }
+            }
+            if (ifvalid) {
+                table.remove(0);
+
+                for (Element row : table) {
+                        objectTable.setArrayRK(row.select("td:nth-child(1)").text());//
+                        objectTable.setArraySno(row.select("td:nth-child(2)").text());
+                        objectTable.setArrayName(row.select(" td:nth-child(4)").text());
+                        objectTable.setArrayRtg( row.select("td.CRr").text());
+                        objectTable.setArrayState(row.select("td:nth-child(7)").text());
+                        objectTable.setArrayPts(row.select("td:nth-child(8)").text().replace(",","."));
+                        objectTable.setArrayCat(cat);
+                        count ++;
+
                     }
-                    objectTable.setArrayRK(row.select("td:nth-child(1)").text(), count);//
-                    objectTable.setArraySno(row.select("td:nth-child(2)").text(),count);
-                    objectTable.setArrayName(row.select(" td:nth-child(4)").text(),count);
-                    objectTable.setArrayRtg( row.select("td.CRr").text(),count);
-                    objectTable.setArrayState(row.select("td:nth-child(7)").text(),count);
-                    objectTable.setArrayPts(row.select("td:nth-child(8)").text(),count);
-                    objectTable.setArrayCat(cat,count);
-                    count ++;
+
+
 
                 }
 
-
-
-            }
-            //System.out.println(ifvalid);
             if (ifvalid) {
-                playerlist[countvtable] = objectTable;
-                countvtable++;
+                playerlist.add(objectTable);
+
             }
             else{
                 LogFile logFile = new LogFile();
@@ -72,8 +75,10 @@ public class CheckTable {
 
     }
 
-    public ObjectTable [] getPlayerList() {
+    public List <ObjectTable> getPlayerList() {
         return playerlist;
     }
+
+
 }
 
