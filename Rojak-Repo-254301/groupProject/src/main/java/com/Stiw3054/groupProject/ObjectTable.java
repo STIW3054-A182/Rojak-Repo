@@ -1,77 +1,62 @@
 package com.Stiw3054.groupProject;
-
-public class ObjectTable {
-    private String [] arrayRK=new String[100];
-    private String [] arraySno=new String[100] ;
-    private String [] arrayName=new String[100] ;
-    private  String [] arrayRtg=new String[100] ;
-    private String [] arrayState=new String[100];
-    private  String [] arrayPts=new String[100] ;
-    private String [] arrayCat =new String[100];
-    private String word;
+import java.util.ArrayList;
+import java.util.List;
+public class ObjectTable  {
+    private List <String>arrayRK = new ArrayList<String>();
+    private List <String>arraySno=new ArrayList<String>();
+    private List <String>arrayName=new ArrayList<String>();
+    private  List <String>arrayRtg=new ArrayList<String>();
+    private List <String>arrayState=new ArrayList<String>();
+    private  List <String>arrayPts=new ArrayList<String>();
+    private List <String>arrayCat =new ArrayList<String>();
     private int count ;
     public ObjectTable() {
 
     }
 
-    public String[] getArrayRK() {
+    public List<String> getArrayRK() {
         return arrayRK;
     }
 
-    public String[] getArraySno() {
+    public List<String> getArraySno() {
         return arraySno;
     }
 
-    public String[] getArrayName() {
+    public List<String> getArrayName() {
         return arrayName;
     }
 
-    public String[] getArrayRtg() {
+    public List<String> getArrayRtg() {
         return arrayRtg;
     }
 
-    public String[] getArrayState() {
+    public List<String> getArrayState() {
         return arrayState;
     }
 
-    public String[] getArrayPts() {
+    public List<String> getArrayPts() {
         return arrayPts;
     }
 
-    public String[] getArrayCat() {
+    public List<String> getArrayCat() {
         return arrayCat;
     }
 
-    public void setArrayRK(String RK, int count) {
-        arrayRK[count] = RK ;
+    public void setArrayRK(String RK) { arrayRK.add(RK) ; }
+
+    public void setArraySno(String Sno) {
+        arraySno.add(Sno) ;
     }
 
-    public void setArraySno(String Sno,int count) {
-        arraySno [count]= Sno ;
+    public void setArrayName(String Name) {
+        arrayName.add(Name) ;
     }
 
-    public void setArrayName(String Name,int count) {
-        arrayName [count] = Name ;
-    }
+    public void setArrayRtg(String Rtg) { arrayRtg.add(Rtg) ; }
 
-    public void setArrayRtg(String Rtg,int count) {
-        arrayRtg [count] = Rtg ;
-    }
+    public void setArrayState(String State) { arrayState.add( State) ; }
 
-    public void setArrayState(String State,int count) {
+    public void setArrayPts(String Pts) { arrayPts.add(Pts) ; }
 
-        arrayState [count] = State ;
-    }
-
-    public void setArrayPts(String Pts,int count) {
-
-        arrayPts [count] = Pts ;
-    }
-
-    public void setArrayCat(String Cat,int count) {
-        if (count==0)
-            arrayCat [count] = "Category";
-        else
-        arrayCat [count] = Cat;
-    }
+    public void setArrayCat(String Cat) { arrayCat.add(Cat);}
 }

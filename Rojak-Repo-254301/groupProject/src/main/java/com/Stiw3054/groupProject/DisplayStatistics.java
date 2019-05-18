@@ -1,5 +1,7 @@
 package com.Stiw3054.groupProject;
 
+import java.util.List;
+
 public class DisplayStatistics {
 
     String[] AllState = {"KUALA LUMPUR", "PUTRAJAYA", "JOHOR",
@@ -7,9 +9,9 @@ public class DisplayStatistics {
             "SABAH", "SARAWAK", "N.SEMBILAN", "PERLIS",
             "KELANTAN", "TERENGANU", "PAHANG", "MELAKA"};
 
-    private ObjectTable[] playerlist;
+    private List<ObjectTable> playerlist;
 
-    DisplayStatistics(ObjectTable[]playerlist) {this.playerlist=playerlist;}
+    DisplayStatistics(List<ObjectTable> playerlist) {this.playerlist=playerlist;}
 
     void displayStatistics() {
 
@@ -18,16 +20,16 @@ public class DisplayStatistics {
             int total = 0;
             System.out.printf("| %-15s  |  %-50s  |%-5s |\n", "State", "Category", "Total");
             System.out.printf("| %-15s  |  %-50s  |%-5s |\n", "---------------", "--------------------------------------------------", "-----");
-            for (int y = 0; y < 10; y++) {
+            for (ObjectTable plist : playerlist) {
                 int totalbyCAt = 0;
-                for (int x = 1; x < playerlist[0].getArrayRK().length; x++) {
-                    if ((AllState[z]).equals(playerlist[y].getArrayState()[x])) {
+                for (int x = 0; x < plist.getArrayRK().size(); x++) {
+                    if ((AllState[z]).equals(plist.getArrayState().get(x))) {
                         totalbyCAt++;
                     }
                 }
                 total += totalbyCAt;
 
-                System.out.printf("| %-15s  |  %-50s  | %d\t |\n", AllState[z], playerlist[y].getArrayCat()[1], totalbyCAt);
+                System.out.printf("| %-15s  |  %-50s  | %d\t |\n", AllState[z], plist.getArrayCat().get(1), totalbyCAt);
             }
             GrandTotal += total;
             System.out.printf("| %-15s  |  %-50s  | %d\t |\n", "...", "Total", total);

@@ -61,14 +61,14 @@ public class CheckURL {
         CheckT.Checktable();
 
 
-        ObjectTable[] playerlist = CheckT.getPlayerList();        //*
+        List<ObjectTable>playerlist = CheckT.getPlayerList();        //*
         displayAll display = new displayAll(playerlist);           //*  <---------- take playerlist  value to yr constructor to print something
         display.displayall();
 
         System.out.println();
         System.out.println("2. Count player......");
 
-        PlayerCount pc1 = new PlayerCount(playerlist);
+       PlayerCount pc1 = new PlayerCount(playerlist);
         pc1.playerCounter();
 
         System.out.println();
@@ -86,14 +86,15 @@ public class CheckURL {
         DisplayTop3 displayTop3 = new DisplayTop3();
         displayTop3.displaytop3(playerlist, propertiesFile.ReadPropertiesTop());
 
-        System.out.println();
         System.out.println("6. Display Wining Points......");
-        CountWiningPoint countWiningPoint = new CountWiningPoint(ValidURLlist);
+        /*CountWiningPoint countWiningPoint = new CountWiningPoint(ValidURLlist);
         countWiningPoint.checkWiningPointTable();
         List Alldata = countWiningPoint.getPlayerList();
         CountWiningPoint cwp = new CountWiningPoint(ValidURLlist);
-        cwp.count(Alldata);
+        cwp.count(Alldata);*/
 
+        CountWiningPoint countWiningPoint = new CountWiningPoint(playerlist);
+        countWiningPoint.count();
         System.out.println();
         System.out.println("7. Display A Player Result......\n");
         DisplayPlayerResult displayPlayerResult = new DisplayPlayerResult();

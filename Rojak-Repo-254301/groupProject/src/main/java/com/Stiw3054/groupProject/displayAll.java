@@ -1,19 +1,23 @@
 package com.Stiw3054.groupProject;
 
-public class displayAll {
-    ObjectTable [] playerlist;
+import java.util.List;
 
-    public displayAll( ObjectTable [] playerlist) { //<-------------------- bring in player list
+public class displayAll {
+    List<ObjectTable> playerlist;
+
+    public displayAll(List <ObjectTable> playerlist) { //<-------------------- bring in player list
         this.playerlist = playerlist;
     }
-                                                                                                  // THis  is category         this is each row data
+
     public void  displayall(){
-        for(int y = 0; y < 10;y++ ) {                                                                      //    ^               ^
-            for (int x = 0; x < playerlist[1].getArrayRK().length; x++) {                                 //    /|\             /|\
-                if (playerlist[y].getArrayRK()[x] != null) {                                              //     |               |
-                    System.out.printf("\n| %-3s  |  %-3s  |  %-42s | %-4s | %-15s  | %-4s | %-50s |", playerlist[y].getArrayRK()[x], playerlist[y].getArraySno()[x], playerlist[y].getArrayName()[x], playerlist[y].getArrayRtg()[x], playerlist[y].getArrayState()[x], playerlist[y].getArrayPts()[x], playerlist[y].getArrayCat()[x]);
-                }
-            }System.out.println();
+        for(ObjectTable plist:playerlist) {
+            System.out.println("| Rk.  |  SNo  |  Name                                       | Rtg  | Club/City        | Pts. | Category                                           |");
+            System.out.println("-------|-------|---------------------------------------------|------|------------------|------|----------------------------------------------------|");
+            for (int x = 0;x<plist.getArrayName().size(); x++) {
+
+                    System.out.printf("| %-3s  |  %-3s  |  %-42s | %-4s | %-15s  | %-4s | %-50s |\n", plist.getArrayRK().get(x), plist.getArraySno().get(x), plist.getArrayName().get(x), plist.getArrayRtg().get(x), plist.getArrayState().get(x), plist.getArrayPts().get(x), plist.getArrayCat().get(x));
+
+            }System.out.println("");
         }
 
     }
