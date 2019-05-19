@@ -9,7 +9,6 @@ public class PlayerCount {
     }
 
     public void playerCounter(){
-        int [] playerNum = new int [10];
 
         int total =0;
         System.out.println("");
