@@ -13,7 +13,7 @@
 **Introduction**
 
 In this group project, our group are required to develop a real-time system by using Java Programming Language (Maven). 
-The system on this project should be able to :
+The system in this project should be able to :
 1. Check URLs that given in the text file. This step is to determine whether the URLs given are valid or invalid.
 2. Count the number of players. 
 3. Display statistics.
