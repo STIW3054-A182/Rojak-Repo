@@ -2,15 +2,17 @@
 
 **Group Members:** 
 
-1. Ng Mee Wai   254301 (Leader)
-2. Wong Kin Sin 253123
-3. Sim Lai Yee  253290
-4. Tan Shi Jet  245210
-5. Li ShaoBin   231501
+|  No  |       Name                 |   Position                       |
+|------|----------------------------|----------------------------------|
+|    1.| Ng Mee Wai (254301)        |  Leader                          |
+|    2.| Wong Kin Sin (253123)      |  Member                          |
+|    3.| Sim Lai Yee (253290)       |  Member                          |
+|    4.| Tan Shi Jet (245210)       |  Member                          |
+|    5.| Li ShaoBin (231501)        |  Member                          |
 
 **Table of Contents**
 
-|No    |       Class                |   Description                   |
+|  No  |       Class                |   Description                   |
 |------|----------------------------|---------------------------------|
 |    1.| CheckURL                   | Main Class of the program.      |
 |    2.| NetworkConnection          | This class will check whether the URLs given are valid or invalid.|
